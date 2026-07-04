@@ -11,7 +11,7 @@ class Produto_Terminal_View:
         print(f"1 - Cadastrar produto")
         print(f"2 - Listar produtos")
         print(f"3 - Atualizar produto")
-        print(f"4 - Excluit produto")
+        print(f"4 - Excluir produto")
         print(f"0 - Sair")
         print(Fore.CYAN + "="*50)
         try:
@@ -43,3 +43,7 @@ class Produto_Terminal_View:
     def exibir_mensagem(self, mensagem, sucesso=True):
         cor = Fore.GREEN if sucesso else Fore.RED
         print(cor + f"\n[STATUS] {mensagem}\n")
+        self.aguardar_entrada()
+
+    def aguardar_entrada(self):
+        input(Fore.WHITE + "Pressione Enter para continuar...")
