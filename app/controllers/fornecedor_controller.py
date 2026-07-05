@@ -17,6 +17,7 @@ class Fornecedor_Controller:
                 try:
                     razao, nome, cnpj, sla = self.view.ler_dados_fornecedor()
                     fornecedor = Fornecedor(None, razao, nome, cnpj, sla)
+                    fornecedor.validar_sla(sla)
                     self.dao.save(fornecedor)
                     self.view.exibir_mensagem("Fornecedor cadastrado com sucesso!")
                 except ValueError:
