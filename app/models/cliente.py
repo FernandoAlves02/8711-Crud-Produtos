@@ -5,6 +5,38 @@ class Cliente:
         self._data_nascimento = data_nascimento
         self._limite_credito = limite_credito
 
+    @property
+    def id(self):
+        return self._id
+    
+    @id.setter
+    def id(self, novo_id):
+        self._id = novo_id
+
+    @property
+    def nome(self):
+        return self._nome
+    
+    @nome.setter
+    def nome(self, novo_nome):
+        self._nome = novo_nome
+
+    @property
+    def data_nascimento(self):
+        return self._data_nascimento
+    
+    @data_nascimento.setter
+    def data_nascimento(self, nova_data):
+        self._data_nascimento = nova_data
+
+    @property
+    def limite_credito(self):
+        return self._limite_credito
+    
+    @limite_credito.setter
+    def limite_credito(self, novo_limite):
+        self._limite_credito = novo_limite
+
     def validar_limite_credito(self, novo_limite):
         if novo_limite < 0:
             raise ValueError("O limite de crédito não pode ser negativo.")
