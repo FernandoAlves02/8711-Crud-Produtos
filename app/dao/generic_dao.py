@@ -6,7 +6,7 @@ class Generic_DAO(DAO):
         self._novo_id = 1
 
     def save(self, objeto):
-        objeto._id = self._novo_id
+        objeto.id = self._novo_id
         self._dados.append(objeto)
         self._novo_id += 1
         return objeto
@@ -16,7 +16,7 @@ class Generic_DAO(DAO):
     
     def get_by_id(self, id):
         for d in self._dados:
-            if d._id == id:
+            if d.id == id:
                 return d
             
     def update(self, objeto):

@@ -37,7 +37,7 @@ class Cliente_Terminal_View:
         print(f"{'ID':<4} | {'NOME':<29} | {'DATA NASCIMENTO':<15} | {'LIMITE CRÉDITO':<15}")
         print("-"*72)
         for c in clientes:
-            print(f"{c._id:<4} | {c._nome:<29} | {c._data_nascimento:<15} | {c._limite_credito:<15}")
+            print(f"{c.id:<4} | {c.nome:<29} | {c.data_nascimento:<15} | {c.limite_credito:<15}")
         print("-"*72)
         
     def exibir_mensagem(self, mensagem, sucesso=True):

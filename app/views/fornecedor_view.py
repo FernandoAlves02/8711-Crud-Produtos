@@ -38,7 +38,7 @@ class Fornecedor_Terminal_View:
         print(f"{'ID':<4} | {'RAZÃO SOCIAL':<29} | {'NOME FANTASIA':<20} | {'CNPJ':<18} | {'SLA ATENDIMENTO':<17}")
         print("-"*100)
         for f in fornecedores:
-            print(f"{f._id:<4} | {f._razao_social:<29} | {f._nome_fantasia:<20} | {f._cnpj:<18} | {f._sla_atendimento:<17}")
+            print(f"{f.id:<4} | {f.razao_social:<29} | {f.nome_fantasia:<20} | {f.cnpj:<18} | {f.sla_atendimento:<17}")
         print("-"*100)
 
     def exibir_mensagem(self, mensagem, sucesso=True):
