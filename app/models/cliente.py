@@ -1,3 +1,5 @@
+from app.core.data_utils import Data_Utils
+
 class Cliente:
     def __init__(self, id, nome, data_nascimento, limite_credito):
         self._id = id
@@ -36,6 +38,10 @@ class Cliente:
     @limite_credito.setter
     def limite_credito(self, novo_limite):
         self._limite_credito = novo_limite
+
+    @property
+    def idade(self):
+        return Data_Utils.calcular_idade(self._data_nascimento)
 
     def validar_limite_credito(self, novo_limite):
         if novo_limite < 0:
