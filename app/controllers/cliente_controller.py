@@ -1,5 +1,6 @@
 import os
 from app.models.cliente import Cliente
+from app.core.data_utils import Data_Utils
 
 class Cliente_Controller:
     def __init__(self, dao, view):
@@ -11,11 +12,12 @@ class Cliente_Controller:
             os.system('cls' if os.name == 'nt' else 'clear')
             opcao = self.view.renderizar_menu()
             if opcao == 0:
-                self.view.exibir_mensagem("Saindo do sistema...")
+                self.view.exibir_mensagem("Saindo do módulo...")
                 break
             elif opcao == 1:
                 try:
                     nome, data_nascimento, limite_credito = self.view.ler_dados_cliente()
+                    data_nascimento = Data_Utils.string_para_data(data_nascimento)
                     cliente = Cliente(None, nome, data_nascimento, limite_credito)
                     cliente.validar_limite_credito(limite_credito)
                     self.dao.save(cliente)
@@ -36,6 +38,7 @@ class Cliente_Controller:
                     cliente_existente = self.dao.get_by_id(id_cliente) 
                     if cliente_existente:
                         nome, data_nascimento, limite_credito = self.view.ler_dados_cliente()
+                        data_nascimento = Data_Utils.string_para_data(data_nascimento)
                         cliente_existente.atualizar_dados(nome, data_nascimento, limite_credito)
                         self.dao.update(cliente_existente)
                         self.view.exibir_mensagem("Cliente atualizado com sucesso!")

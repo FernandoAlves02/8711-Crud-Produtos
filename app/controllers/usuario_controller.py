@@ -1,5 +1,6 @@
 import os
 from app.models.usuario import Usuario
+from app.core.data_utils import Data_Utils
 
 class Usuario_Controller:
     def __init__(self, dao, view):
@@ -11,11 +12,12 @@ class Usuario_Controller:
             os.system('cls' if os.name == 'nt' else 'clear')
             opcao = self.view.renderizar_menu()
             if opcao == 0:
-                self.view.exibir_mensagem("Saindo do sistema...")
+                self.view.exibir_mensagem("Saindo do módulo...")
                 break
             elif opcao == 1:
                 try:
                     nome, email, data_nascimento = self.view.ler_dados_usuario()
+                    data_nascimento = Data_Utils.string_para_data(data_nascimento)
                     usuario = Usuario(None, nome, email, data_nascimento)
                     self.dao.save(usuario)
                     self.view.exibir_mensagem("Usuário cadastrado com sucesso!")
@@ -35,6 +37,7 @@ class Usuario_Controller:
                     usuario_existente = self.dao.get_by_id(id_usuario)
                     if usuario_existente:
                         nome, email, data_nascimento = self.view.ler_dados_usuario()
+                        data_nascimento = Data_Utils.string_para_data(data_nascimento)
                         usuario_existente.atualizar_dados(nome, email, data_nascimento)
                         self.dao.update(usuario_existente)
                         self.view.exibir_mensagem("Usuário atualizado com sucesso!")

@@ -1,3 +1,5 @@
+from app.core.data_utils import Data_Utils
+
 class Usuario:
     def __init__(self, id, nome, email, data_nascimento):
         self._id = id
@@ -32,6 +34,10 @@ class Usuario:
     @property
     def data_nascimento(self):
         return self._data_nascimento
+    
+    @property
+    def idade(self):
+        return Data_Utils.calcular_idade(self._data_nascimento)
     
     @data_nascimento.setter
     def data_nascimento(self, nova_data):

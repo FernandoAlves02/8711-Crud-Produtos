@@ -11,7 +11,7 @@ class Fornecedor_Controller:
             os.system('cls' if os.name == 'nt' else 'clear')
             opcao = self.view.renderizar_menu()
             if opcao == 0:
-                self.view.exibir_mensagem("Saindo do sistema...")
+                self.view.exibir_mensagem("Saindo do módulo...")
                 break
             elif opcao == 1:
                 try:

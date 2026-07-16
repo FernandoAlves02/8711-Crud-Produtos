@@ -4,7 +4,7 @@ class Fornecedor:
         self._razao_social = razao_social
         self._nome_fantasia = nome_fantasia
         self._cnpj = cpnj
-        self._sla_atendimento = self.validar_sla(sla_atendimento)
+        self._sla_atendimento = sla_atendimento
 
     @property
     def id(self):
