@@ -1,6 +1,6 @@
 use mini_erp;
 
-create table produto
+create table if not exists produto
 (
     id integer not null auto_increment,
     nome varchar(50) not null,

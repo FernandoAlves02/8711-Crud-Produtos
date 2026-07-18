@@ -36,7 +36,7 @@ class Usuario_Controller:
                     id_usuario = int(self.view.ler_id())
                     usuario_existente = self.dao.get_by_id(id_usuario)
                     if usuario_existente:
-                        nome, email, data_nascimento = self.view.ler_dados_usuario()
+                        nome, email, data_nascimento = self.view.ler_dados_usuario(usuario_existente)
                         data_nascimento = Data_Utils.string_para_data(data_nascimento)
                         usuario_existente.atualizar_dados(nome, email, data_nascimento)
                         self.dao.update(usuario_existente)

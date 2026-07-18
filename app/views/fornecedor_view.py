@@ -19,12 +19,22 @@ class Fornecedor_Terminal_View:
         except ValueError:
             return -1
         
-    def ler_dados_fornecedor(self):
+    def ler_campo(self, rotulo, valor_atual=None):
+        if valor_atual is not None:
+            prompt = f"{rotulo} [{Fore.GREEN}{valor_atual}{Style.RESET_ALL}]: "
+        else:
+            prompt = f"{rotulo}: "
+        valor = input(prompt)
+        if valor == "" and valor_atual is not None:
+            return valor_atual
+        return valor
+
+    def ler_dados_fornecedor(self, fornecedor_existente=None):
         print(Fore.CYAN + Style.BRIGHT + "=== CADASTRO DE FORNECEDOR ===")
-        razao = input("Digite a razão social do fornecedor: ")
-        nome = input("Digite o nome fantasia do fonecedor: ")
-        cnpj = input("Digite o CNPJ do fornecedor: ")
-        sla = int(input("Digite o SLA de atendimento do fornecedor: "))
+        razao = self.ler_campo("Razão social do fornecedor", fornecedor_existente.razao_social if fornecedor_existente else None)
+        nome = self.ler_campo("Nome fantasia do fonecedor", fornecedor_existente.nome_fantasia if fornecedor_existente else None)
+        cnpj = self.ler_campo("CNPJ do fornecedor", fornecedor_existente.cnpj if fornecedor_existente else None)
+        sla = int(self.ler_campo("SLA de atendimento do fornecedor", fornecedor_existente.sla_atendimento if fornecedor_existente else None))
         return razao, nome, cnpj, sla
 
     def ler_id(self):

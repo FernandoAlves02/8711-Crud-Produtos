@@ -34,7 +34,7 @@ class Fornecedor_Controller:
                     id_fornecedor = int(self.view.ler_id())
                     fornecedor_existente = self.dao.get_by_id(id_fornecedor) 
                     if fornecedor_existente:
-                        razao, nome, cnpj, sla = self.view.ler_dados_fornecedor()
+                        razao, nome, cnpj, sla = self.view.ler_dados_fornecedor(fornecedor_existente)
                         fornecedor_existente.atualizar_dados(razao, nome, cnpj, sla)
                         self.dao.update(fornecedor_existente)
                         self.view.exibir_mensagem("Fornecedor atualizado com sucesso!")
